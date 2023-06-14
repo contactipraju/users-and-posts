@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-export async function getUsers() {
-	const resp = await axios.get('https://jsonplaceholder.typicode.com/users');
+export const client = axios.create({
+	baseURL: 'https://jsonplaceholder.typicode.com'
+});
+
+export const getUsers = async () => {
+	const resp = await client.get('/users');
 	return resp.data;
 }
 
-export async function getPosts(userId: number) {
-	const resp = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+export const getPosts = async (userId: number) => {
+	const resp = await client.get(`/posts?userId=${userId}`);
 	return resp.data;
 }
