@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
+import { Provider } from "react-redux";
 
+import store from './store/store';
 import { getUsers } from "./Users.service";
 
 import Users from './components/Users/Users';
 import NameSearch from "./components/NameSearch/NameSearch";
 
 import './UsersPage.scss';
+import { loadUsers } from "./store/actions";
 
 function UsersPage() {
-	const [users, setUsers] = useState([]);
 	const [filteredUsers, setFilteredUsers] = useState([]);
 
+	// Load all users once, store them in the global store, and provide them to all components under this page
 	useEffect(() => {
 		getUsers().then(resp => {
-			setUsers(resp);
+			store.dispatch(loadUsers(resp));
 			return resp;
 		}).then(resp => {
 			setFilteredUsers(resp);
@@ -21,10 +24,13 @@ function UsersPage() {
 	}, []);
 
 	return (
-		<div id="users-page">
-			<NameSearch users={users} setFilteredUsers={setFilteredUsers} />
-			<Users users={filteredUsers}/>
-		</div>
+		<Provider store={store}>
+			<div id="users-page">
+				<NameSearch setFilteredUsers={setFilteredUsers} />
+				<Users filteredUsers={filteredUsers}/>
+			</div>
+		</Provider>
+
 	);
 }
 

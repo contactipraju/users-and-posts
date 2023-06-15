@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { IPostInfo, IUserInfo } from '../../Users.interfaces';
 import { getPosts } from '../../Users.service';
 
-function Users({users}: any) {
+function Users({filteredUsers}: any) {
 	const [posts, setPosts] = useState([]);
 	const [selectedUser, setSelectedUser] = useState(-1);
 
@@ -21,7 +21,7 @@ function Users({users}: any) {
 	return (
 		<div id="users-and-posts">
 			{
-				users && users.length > 0 && 
+				filteredUsers && filteredUsers.length > 0 && 
 				<div className="users">
 					<table>
 						<thead>
@@ -34,7 +34,7 @@ function Users({users}: any) {
 						</thead>
 						<tbody>
 						{
-							users.map((user: IUserInfo, index: number) => (
+							filteredUsers.map((user: IUserInfo, index: number) => (
 								<tr key={user.id} onClick={() => setSelectedUser(index+1)}>
 									<td>{user.name}</td>
 									<td>{user.email}</td>

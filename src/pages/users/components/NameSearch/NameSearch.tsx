@@ -1,7 +1,13 @@
+import { useSelector } from 'react-redux';
+
+import { IStore }    from '../../store/store';
 import { IUserInfo } from '../../Users.interfaces';
+
 import './NameSearch.scss';
 
-const NameSearch = ({ users, setFilteredUsers }: any) => {
+const NameSearch = ({ setFilteredUsers }: any) => {
+	const users = useSelector((state: IStore) => state.users!);
+
 	const submitHandler = (event: any) => event.preventDefault();
 
 	const searchChange = (event: any) => {
@@ -20,4 +26,4 @@ const NameSearch = ({ users, setFilteredUsers }: any) => {
 	)
 }
 
-export default NameSearch
+export default NameSearch;
