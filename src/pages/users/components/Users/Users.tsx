@@ -1,25 +1,13 @@
+import store from './../../store/store';
+import { updateSelectedUser } from "../../store/actions";
+
+import { IUserInfo } from '../../Users.interfaces';
+
 import './Users.scss';
 
-import { useState, useEffect } from "react";
-
-import { IPostInfo, IUserInfo } from '../../Users.interfaces';
-import { getPosts } from '../../Users.service';
-
 function Users({filteredUsers}: any) {
-	const [posts, setPosts] = useState([]);
-	const [selectedUser, setSelectedUser] = useState(-1);
-
-	useEffect(() => {
-		if (selectedUser >= 0) {
-			getPosts(selectedUser).then((resp) => {
-				console.log(`loaded posts for: ${selectedUser}`, resp);
-				setPosts(resp);
-			})
-		}
-	}, [selectedUser]);
-
 	return (
-		<div id="users-and-posts">
+		<div id="filtered-users">
 			{
 				filteredUsers && filteredUsers.length > 0 && 
 				<div className="users">
@@ -35,7 +23,7 @@ function Users({filteredUsers}: any) {
 						<tbody>
 						{
 							filteredUsers.map((user: IUserInfo, index: number) => (
-								<tr key={user.id} onClick={() => setSelectedUser(index+1)}>
+								<tr key={user.id} onClick={() => store.dispatch(updateSelectedUser(user))}>
 									<td>{user.name}</td>
 									<td>{user.email}</td>
 									<td>{user.address.city}</td>
@@ -43,30 +31,6 @@ function Users({filteredUsers}: any) {
 								</tr>
 							))
 						}
-						</tbody>
-					</table>
-				</div>
-			}
-
-			{
-				posts && posts.length > 0 && 
-				<div className="posts">
-					<table>
-						<thead>
-							<tr>
-								<th>Title</th>
-								<th>Body</th>
-							</tr>
-						</thead>
-						<tbody>
-							{
-								posts.map((post: IPostInfo) => (
-									<tr key={post.id}>
-										<td>{post.title}</td>
-										<td>{post.body}</td>
-									</tr>
-								))
-							}
 						</tbody>
 					</table>
 				</div>
