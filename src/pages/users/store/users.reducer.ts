@@ -1,7 +1,7 @@
 import { IStore } from "./store";
 import { UserActions, EUserActions } from "./actionTypes";
 
-export default function reducer(state: IStore = {}, action: UserActions): IStore {
+export default function userReducer(state: IStore = {}, action: UserActions): IStore {
 	switch(action.type) {
 		case EUserActions.LOAD_USERS:
 			return {
@@ -9,9 +9,11 @@ export default function reducer(state: IStore = {}, action: UserActions): IStore
 				users: action.payload
 			}
 
-		case EUserActions.LOAD_POSTS:
-			// TODO: 
-			return state;
+		case EUserActions.UPDATE_SELECTED_USER:
+			return {
+				...state,
+				selectedUser: action.payload
+			};
 
 		default:
 			// Just return the original state

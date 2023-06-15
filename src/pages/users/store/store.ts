@@ -1,12 +1,13 @@
 import { createStore } from "redux";
 
-import reducer from "./users.reducer";
+import userReducer   from "./users.reducer";
 import { IUserInfo } from '../Users.interfaces';
 
 export interface IStore {
 	users?: IUserInfo[];
+	selectedUser?: IUserInfo;
 };
 
-const store = createStore(reducer);
+const store = createStore(userReducer);
 
 export default store;

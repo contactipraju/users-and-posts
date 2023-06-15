@@ -1,5 +1,5 @@
-#filtered-users {
-	width: 80%;
+#posts {
+	width: 100%;
 	padding: 20px;
 
 	margin-left: auto;
@@ -7,11 +7,6 @@
 
 	> div {
 		padding-bottom: 30px;
-
-		table tbody tr {
-			cursor: pointer;
-		}
-
 		th,td {
 			text-align: left;
 			padding: 6px;

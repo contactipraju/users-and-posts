@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 
 import store from './store/store';
+import { loadUsers } from "./store/actions";
+
 import { getUsers } from "./Users.service";
 
-import Users from './components/Users/Users';
 import NameSearch from "./components/NameSearch/NameSearch";
+import Users from './components/Users/Users';
+import Posts from './components/Posts/Posts';
 
 import './UsersPage.scss';
-import { loadUsers } from "./store/actions";
 
 function UsersPage() {
 	const [filteredUsers, setFilteredUsers] = useState([]);
@@ -27,10 +29,10 @@ function UsersPage() {
 		<Provider store={store}>
 			<div id="users-page">
 				<NameSearch setFilteredUsers={setFilteredUsers} />
-				<Users filteredUsers={filteredUsers}/>
+				<Users filteredUsers={filteredUsers} />
+				<Posts />
 			</div>
 		</Provider>
-
 	);
 }
 
