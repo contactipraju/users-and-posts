@@ -1,5 +1,5 @@
 #posts {
-	width: 100%;
+	width: 90%;
 	padding: 20px;
 
 	margin-left: auto;
@@ -7,10 +7,15 @@
 
 	> div {
 		padding-bottom: 30px;
-		th,td {
-			text-align: left;
-			padding: 6px;
-			border: 1px solid #ccc;
+
+		table {
+			width: 100%;
+
+			th,td {
+				text-align: left;
+				padding: 6px;
+				border: 1px solid #ccc;
+			}
 		}
 	}
 }
