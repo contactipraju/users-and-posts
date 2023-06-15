@@ -15,13 +15,13 @@ const NameSearch = ({ setFilteredUsers }: any) => {
 			return setFilteredUsers(users);
 		}
 
-		const results = users.filter((user: IUserInfo) => user.name.includes(event.target.value));
+		const results = users.filter((user: IUserInfo) => user.name.toLowerCase().includes(event.target.value.toLowerCase()));
 		setFilteredUsers(results);
 	}
 
 	return (
 		<form className="search" onSubmit={submitHandler}>
-			<input type="text" id="search" className="search__input" onChange={searchChange} placeholder="Search User" />
+			<input aria-label="search" type="text" id="search" className="search__input" onChange={searchChange} placeholder="Search User" />
 		</form>
 	)
 }

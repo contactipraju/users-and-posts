@@ -24,7 +24,10 @@ function Posts() {
 		<div id="posts">
 			{
 				selectedUser && selectedUser.name &&
-				<div>Displaying posts for the user: {selectedUser.name}</div>
+				<div>
+					<span data-testid="display-message">Displaying posts for the user:</span>
+					<span>{selectedUser.name}</span>
+				</div>
 			}
 			{
 				posts && posts.length > 0 && 
