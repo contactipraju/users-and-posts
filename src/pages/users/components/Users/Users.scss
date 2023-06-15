@@ -8,14 +8,18 @@
 	> div {
 		padding-bottom: 30px;
 
-		table tbody tr {
-			cursor: pointer;
-		}
+		table {
+			width: 100%;
 
-		th,td {
-			text-align: left;
-			padding: 6px;
-			border: 1px solid #ccc;
+			tbody tr {
+				cursor: pointer;
+			}
+
+			th,td {
+				text-align: left;
+				padding: 6px;
+				border: 1px solid #ccc;
+			}
 		}
 	}
 }

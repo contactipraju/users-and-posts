@@ -22,6 +22,7 @@ function Posts() {
 
 	return (
 		<div id="posts">
+			<div>Displaying posts for the user: {selectedUser.name}</div>
 			{
 				posts && posts.length > 0 && 
 				<div className="posts">
