@@ -6,7 +6,7 @@ export const loadUsers = (users: IUserInfo[]) => ({
 	payload: users
 });
 
-export const updateSelectedUser = (user: IUserInfo) => ({
+export const updateSelectedUser = (user: IUserInfo | null) => ({
 	type: EUserActions.UPDATE_SELECTED_USER,
 	payload: user
 });
