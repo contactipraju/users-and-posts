@@ -5,7 +5,7 @@ import { IUserInfo } from '../Users.interfaces';
 
 export interface IStore {
 	users?: IUserInfo[];
-	selectedUser?: IUserInfo;
+	selectedUser?: IUserInfo | null;
 };
 
 const store = createStore(userReducer);
