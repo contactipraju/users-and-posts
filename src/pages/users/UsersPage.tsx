@@ -1,39 +1,39 @@
-import { useState, useEffect } from "react";
-import { Provider } from "react-redux";
+import { useState, useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import store from './store/store';
-import { loadUsers } from "./store/actions";
+import { loadUsers } from './store/actions';
 
-import { getUsers } from "./Users.service";
+import { getUsers }  from './Users.service';
+import { IUserInfo } from './Users.interfaces';
 
-import NameSearch from "./components/NameSearch/NameSearch";
+import NameSearch from './components/NameSearch/NameSearch';
 import Users from './components/Users/Users';
 import Posts from './components/Posts/Posts';
 
 import './UsersPage.scss';
 
 function UsersPage() {
-	const [filteredUsers, setFilteredUsers] = useState([]);
+    const dispatch = useDispatch();
+    const [filteredUsers, setFilteredUsers] = useState<Array<IUserInfo>>([]);
 
-	// Load all users once, store them in the global store, and provide them to all components under this page
-	useEffect(() => {
-		getUsers().then(resp => {
+    // Load all users once, store them in the global store, and provide them to all components under this page
+    useEffect(() => {
+        getUsers().then((resp) => {
 			store.dispatch(loadUsers(resp));
-			return resp;
-		}).then(resp => {
 			setFilteredUsers(resp);
-		});
-	}, []);
+            return resp;
+        });
+    }, [dispatch]);
 
-	return (
-		<Provider store={store}>
-			<div id="users-page">
-				<NameSearch setFilteredUsers={setFilteredUsers} />
-				<Users filteredUsers={filteredUsers} />
-				<Posts />
-			</div>
-		</Provider>
-	);
+    return (
+        <div id="users-page">
+			<NameSearch setFilteredUsers={setFilteredUsers} />
+            <Users filteredUsers={filteredUsers} />
+            <Posts />
+        </div>
+    );
 }
 
 export default UsersPage;
