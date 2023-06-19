@@ -1,5 +1,5 @@
-import { IStore } from "./store";
-import { UserActions, EUserActions } from "./actionTypes";
+import { IStore } from './store';
+import { UserActions, EUserActions } from './actionTypes';
 
 export default function userReducer(state: IStore = {}, action: UserActions): IStore {
 	switch(action.type) {

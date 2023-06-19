@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
-import userReducer   from "./users.reducer";
+import userReducer   from './users.reducer';
 import { IUserInfo } from '../Users.interfaces';
 
 export interface IStore {
