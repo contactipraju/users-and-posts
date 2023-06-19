@@ -15,25 +15,25 @@ import Posts from './components/Posts/Posts';
 import './UsersPage.scss';
 
 function UsersPage() {
-    const dispatch = useDispatch();
-    const [filteredUsers, setFilteredUsers] = useState<Array<IUserInfo>>([]);
+	const dispatch = useDispatch();
+	const [filteredUsers, setFilteredUsers] = useState<Array<IUserInfo>>([]);
 
-    // Load all users once, store them in the global store, and provide them to all components under this page
-    useEffect(() => {
-        getUsers().then((resp) => {
+	// Load all users once, store them in the global store, and provide them to all components under this page
+	useEffect(() => {
+		getUsers().then((resp) => {
 			store.dispatch(loadUsers(resp));
 			setFilteredUsers(resp);
-            return resp;
-        });
-    }, [dispatch]);
+			return resp;
+		});
+	}, [dispatch]);
 
-    return (
-        <div id="users-page">
+	return (
+		<div id='users-page'>
 			<NameSearch setFilteredUsers={setFilteredUsers} />
-            <Users filteredUsers={filteredUsers} />
-            <Posts />
-        </div>
-    );
+			<Users filteredUsers={filteredUsers} />
+			<Posts />
+		</div>
+	);
 }
 
 export default UsersPage;

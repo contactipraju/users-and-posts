@@ -1,5 +1,5 @@
 import store from './../../store/store';
-import { updateSelectedUser } from "../../store/actions";
+import { updateSelectedUser } from '../../store/actions';
 
 import { IUserInfo } from '../../Users.interfaces';
 
@@ -7,10 +7,10 @@ import './Users.scss';
 
 function Users({filteredUsers}: any) {
 	return (
-		<div id="filtered-users">
+		<div id='filtered-users'>
 			{
 				filteredUsers && filteredUsers.length > 0 && 
-				<div className="users">
+				<div className='users'>
 					<table>
 						<thead>
 							<tr>

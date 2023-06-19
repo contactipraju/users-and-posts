@@ -1,19 +1,19 @@
-import "./App.scss";
+import './App.scss';
 
-import UsersPage from "./pages/users/UsersPage";
+import UsersPage from './pages/users/UsersPage';
 
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 
-import store from "./pages/users/store/store";
+import store from './pages/users/store/store';
 
 function App() {
-  return (
-    <div className="App">
-      <Provider store={store}>
-        <UsersPage />
-      </Provider>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Provider store={store}>
+			<UsersPage />
+			</Provider>
+		</div>
+	);
 }
 
 export default App;
